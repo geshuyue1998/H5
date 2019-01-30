@@ -1,0 +1,115 @@
+<!DOCTYPEhtml>
+<html>    
+	<head>       
+		<meta charset="UTF-8">       
+			<title>时钟</title>       
+			<style type="text/css">          
+				 canvas{              
+				 	
+				 	border:1px solid red;    
+				 	}       
+			</style>    
+	</head>    
+	<body>       
+		<canvas id="clock"width="4000" height="4000"></canvas>       
+		<script type="text/javascript">           
+		var canvas =document.querySelector("canvas");           
+		       
+		var g = canvas.getContext("2d"); 
+         
+		
+	//g.rotate( 7 / 180 * Math.PI); 
+
+		function clock(){
+			g.save();g.clearRect(0,0,600,600);
+			g.translate(200,200);
+			var data = new Date();
+		    var sec =data.getSeconds();
+		    var min =data.getMinutes();
+		    var hour=data.getHours();
+			g.rotate(-Math.PI/2);
+				 
+			//轮廓
+			g.beginPath();
+			g.arc(0,0,150,0,2*Math.PI,false);
+			g.lineWidth=4;
+			g.strokeStyle="greenyellow";
+			g.closePath();
+			g.stroke();
+			g.beginPath();
+			g.arc(0,0,3,0,2*Math.PI,false);
+			g.lineWidth=3;
+			g.strokeStyle="black";
+			g.closePath();
+			g.stroke();
+		      //分
+		    for(var i=0;i<60;i++){    //画12个刻度线
+		        g.beginPath();
+		        g.strokeStyle = "black";
+		        g.lineWidth = 1 ;
+		        g.moveTo(100,100);
+		        g.lineTo(95,95);
+		        g.stroke();
+		        g.rotate(Math.PI/30); //每个6deg画一个时钟刻度线
+		        g.closePath();
+		    }
+		       //时
+		    for(var i=0;i<12;i++){ 
+				 	//画12个刻度线
+		        g.beginPath();
+		        g.strokeStyle = "red";
+		        g.lineWidth = 2 ;
+		        g.moveTo(100,100);
+		        g.lineTo(90,90);
+		        g.stroke();
+		        g.rotate( 30 / 180 * Math.PI); 
+		        
+		        //每个30deg画一个时钟刻度线
+		        g.closePath();
+		    }
+		       //分针
+		    g.beginPath();
+		    g.save();
+		    g.rotate(Math.PI/30*min+Math.PI/30*sec/60);
+		    g.strokeStyle = "pink";
+		    g.lineWidth = 4 ;
+		    g.moveTo(-10,0);
+		    g.lineTo(110,0);
+		    g.stroke();
+		    g.restore();
+		    g.closePath();
+		       //时针
+		    hour = hour>12?hour-12:hour;
+		//                console.log(hour);
+		    g.beginPath();
+		    g.save();
+		    g.rotate(Math.PI/6*hour+Math.PI/6*min/60+Math.PI/6*sec/3600);
+		    g.strokeStyle = "purple";
+		    g.lineWidth = 5 ;
+		    g.moveTo(-15,0);
+		    g.lineTo(90,0);
+		    g.stroke();
+		    g.restore();
+		    g.closePath();
+		       //秒针
+		    g.beginPath();
+		    g.save();
+		    g.rotate(Math.PI/30*sec);
+		    g.strokeStyle = "red";
+		    g.lineWidth = 3;
+		    g.moveTo(-20,0);
+		    g.lineTo(130,0);
+		    g.stroke();
+		    g.restore();
+		    g.closePath();
+		
+		    g.restore();
+		}		
+		clock();
+	setInterval(clock,1000);
+		</script>    
+	</body>
+</html>
+
+
+

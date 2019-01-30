@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0 auto;
+			}
+			#canvas{
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="650" height="600"> </canvas>
+		<script>
+			var canvas=document.getElementById("canvas");
+			var context=canvas.getContext("2d");
+			context.moveTo(50,50);
+			context. lineTo(250,250);
+			context. lineTo(50,450);
+			context. lineTo(50,50); 
+			context.lineWidth=1;
+			context.strokeStyle="deepskyblue"
+			context.fillStyle="deepskyblue";
+			context.fill();
+			context. stroke() ;
+			
+			context.beginPath();
+			context.moveTo(50,50);
+			context. lineTo(450,50);
+			context. lineTo(250,250);
+			context. lineTo(50,50); 
+			context.lineWidth=1;
+			context.strokeStyle="greenyellow"
+			context.fillStyle="greenyellow";
+			context.fill();
+			context. stroke() ;
+			
+			context.beginPath();
+			context.moveTo(450,50);
+			context.lineTo(450,250);
+			context.lineTo(350,350);
+			context.lineTo(350,150);
+			context.lineTo(450,50);
+			context.lineWidth=1;
+			context.strokeStyle="crimson"
+			context.fillStyle="crimson";
+			context.fill();
+			context. stroke() ;
+			
+			context.beginPath();
+			context.moveTo(350,150);
+			context. lineTo(350,350);
+			context. lineTo(250,250);
+			context. lineTo(350,150); 
+			context.lineWidth=1;
+			context.strokeStyle="yellow"
+			context.fillStyle="yellow";
+			context.fill();
+			context. stroke() ;
+			
+			context.beginPath();
+			context.moveTo(450,250);
+			context.lineTo(450,450);
+			context.lineTo(250,450);
+			context.lineTo(450,250);
+			context.lineWidth=1;
+			context.strokeStyle="orange"
+			context.fillStyle="orange";
+			context.fill();
+			context. stroke() ;
+			
+			context.beginPath();
+			context.moveTo(250,250);
+			context. lineTo(350,350);
+			context. lineTo(250,450);
+			context. lineTo(150,350); 
+			context. lineTo(250,250); 
+			context.lineWidth=1;
+			context.strokeStyle="purple"
+			context.fillStyle="purple";
+			context.fill();
+			context. stroke() ;
+			
+			context.beginPath();
+			context.moveTo(150,350);
+			context.lineTo(250,450);
+			context.lineTo(50,450);
+			context.lineTo(150,350);
+			context.lineWidth=1;
+			context.strokeStyle="palevioletred"
+			context.fillStyle="palevioletred";
+			context.fill();
+			context. stroke() ;
+			
+		</script>
+	</body>
+</html>

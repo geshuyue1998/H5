@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+		<meta charset="utf-8" />
+		<link rel="icon" href="img/1.jpg" />
+		<title>表单</title>
+		<form  id="testform" action="form.asp" method="get">
+			<input type="number" name="num1" min="2" max="10" step="2">
+			<input type="email" name="email" placeholder="请输入邮箱">
+			<input type="submit">
+			选择数值：<input type="range" name="range" min="1" max="20" step="3">
+			<input type="submit">
+			日期：<input type="date" name="riqi">
+			时间：<input type="time" name="riqi">
+			颜色：<input type="color" name="clo">
+		        搜索：<input type="search" name="movie">
+			<input type="submit">
+			 <input type="search" name="gongfu" autocomplete="on" list="names" results /> 
+				 <datalist id="names"> <!--name必须一样相当于进行了连接绑定-->
+				 	<option>亢龙有悔</option> 
+				 	<option>飞龙在天</option>
+				 	<option>神龙摆尾</option> 
+				 	<option>弹指神通</option> 
+				 	<option>宋晓倩</option> 
+				 </datalist> 
+				 <select> <!--用户不能输入，有很多缺点-->
+				 	<option>亢龙有悔</option> 
+				 	<option>飞龙在天</option>
+				 	<option>神龙摆尾</option> 
+				 	<option>弹指神通</option> 
+				 	<option>宋晓倩</option> 
+				 </select> 
+			姓名：<input type="test" name="name1" required="required" autofocus="autofocus">
+				 <input type="submit" value="提交">
+		</form>
+		自我介绍：<textarea name="area1" form="testform"></textarea>
+		<fieldset>
+			
+			<legend color="red">自我介绍</legend>
+		</fieldset>
+		<!--<title>音乐播放器</title>
+		<div>
+			<div>
+				<div>在线音乐</div>
+				<div>本地音乐</div>
+			</div>
+			<div>
+				<audio src="" controls="controls"></audio>
+				<audio src="" controls="controls"></audio>
+			</div>
+		</div>-->
+		<!--<audio src="" controls="controls"></audio>
+		<audio src="" controls="controls"></audio>-->
+		<!--<p>Hello,World</p>
+	    <nav>
+	    	<ul>
+	    		<li><a href="/">主页</a></li>
+	    		<li><a href="/events">开发文档</a></li>
+	    	</ul>
+	    </nav>
+		<article>
+			<header>
+				<h1>pingguo</h1>
+			</header>
+			<p>拼过 朱无泪划过</p>
+			<footer>著作权归。。所有</footer>
+		</article>-->

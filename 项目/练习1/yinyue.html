@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>音乐播放器</title>
+		<link rel="stylesheet" type="text/css" href="css/style2.css">
+		<script>
+			function changeBackground(){
+    			var mydiv = document.getElementById('mydiv');
+   				 mydiv.style.backgroundColor="lightsteelblue";
+ 			 }
+			function play(){
+				var playbutton = document.getElementById('playaudio');
+				var pausebutton = document.getElementById('pauseaudio');
+				var audio = document.getElementById('audios');
+				audio.play();
+				playbutton.disabled = true;	
+				pausebutton.disabled = false;
+				
+			}
+			function pause(){
+				var audio = document.getElementById('audios');
+				var playbutton = document.getElementById('playaudio');
+				var pausebutton = document.getElementById('pauseaudio');
+				pausebutton.disabled = true;
+				playbutton.disabled = false;
+				audio.pause();
+			}
+		</script>
+	</head>
+	<body>
+		<div class="nav">
+			<div class="a">
+				<div class="one" id="mydiv"  onclick="changeBackground();">在线音乐</div>
+				<div class="two">本地音乐</div>
+			</div>
+			<div class="b">
+				<div class="mingzi">千千阙歌</div>
+				<div class="lianjie"> 
+					<input type='button' value="播放" id="playaudio"  onclick = "play()" />
+	                <input type="button" value="暂停" id="pauseaudio" disabled="disabled"  onclick = "pause()" />
+	                
+				</div>
+			</div>
+			<div class="c">
+				<audio controls="controls"id="audios">
+	  				<source src="qian.mp3" >
+				</audio>
+				
+			</div>
+		</div>
+		
+	</body>
+</html>
+
+		

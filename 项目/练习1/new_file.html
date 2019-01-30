@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>个人信息</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+		<script type="text/javascript">
+        window.onload=function(){
+		var objtxt=document.getElementById("regemail");
+		var objlist=document.getElementById("email");
+        var lists=objlist.getElementsByTagName("option");
+        var len=lists.length;
+        objtxt.onfocus=function(){
+            objlist.style.display="block";
+        }
+        objtxt.onblur=function(){
+            objlist.style.display="none";
+        }
+        objtxt.onkeyup=function(){
+            var txt=this.value;
+            var flag="";
+            if(txt.indexOf("@")>0){
+                flag=txt.substring(txt.indexOf("@")-1);
+                txt=txt.substring(0,txt.indexOf("@"));
+            }else{
+                flag="";
+            }
+            var val="";
+            for(var i=1; i<len; i++){
+                val=lists[i].textContent;
+                val=val.substring(val.indexOf("@"));
+                lists[i].textContent=txt+val;
+            }
+            if(flag!=""){
+                var reg=new RegExp(flag,"i");
+                for(var i=1;i<len;i++){
+                    if(reg.test(lists[i].textContent)){
+                        lists[i].style.display="block";
+                    }else{
+                        lists[i].style.display="none";
+                    }
+                }
+            }
+        }
+        for(var i=1;i<len;i++){
+            lists[i].onmousedown=function(){
+                objtxt.value=this.textContent;
+                objlist.style.display="none";
+            }
+        }
+    }
+	   
+		</script>
+
+	
+	</head>
+	<body>
+		<div>
+			<h1>请填写个人信息</h1>
+			<div class="1">
+				<fieldset>
+					<legend>基本信息</legend>
+					<form>
+						姓名：<input type="test" name="name1" required="required" autofocus="autofocus"><br/>
+			
+						年龄：<input type="number" min="1" step="1"/>
+					</form>
+				</fieldset>
+			</div>
+			<div class="2">
+				<fieldset>
+					<legend>你想在哪里收到邮件？</legend>
+					<form>
+						 邮箱<input id="regemail"  type="text" placeholder="请输入邮箱地址"  
+  				name="email"   autocomplete="on" results/>
+						<datalist id="email">
+			  				<option class="on"></option>
+							<option>@qq.com</option>
+							<option>@163.com</option>
+							<option>@gmail.com</option>
+							<option>@yahoo.com.cn</option>
+							<option>@126.com</option>
+						</datalist>
+
+
+					</form>
+				</fieldset>
+			</div>
+			<div class="3">
+				<fieldset>
+					<legend>收入情况</legend>
+					<form>
+						月收入：<select name="income">
+	    							<option>20k+</option>
+	    						</select><br/>
+						银行卡：<input type="number" />有效期<input type="date"
+					</form>
+				</fieldset>
+			</div>
+			<div class="4">
+				<fieldset>
+					<legend>选取提交文件</legend>
+					<form>
+						文件：<input value="选择文件"  type="file"  multiple="multiple"/>
+					</form>
+				</fieldset>
+			</div>
+			<form class=sub>
+			    <input type="submit" value="提交" />
+            </form>
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0 auto;
+			}
+			#canvas{
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="650" height="600"> </canvas>
+		<script>
+			var canvas=document.getElementById("canvas");
+			var context=canvas.getContext("2d");
+			for(var i=0,i<50,i++){
+				
+				context1.beginPath();
+				context1.arc(Math.random(0,500),Math.random(0,500),Math.random(0,100),0,2*Math.PI,true);
+				context1.fill();
+				context1.strokeStyle="black";
+				context1.fillStyle="black";
+				context.globalAlpha=0.5;
+				context.fillStyle="rgba(225,0,0,0.5)"
+				//context.closePath();
+				context1. stroke() ;
+			}
+			
+		</script>
+	</body>
+</html>

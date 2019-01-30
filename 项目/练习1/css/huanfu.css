@@ -1,0 +1,85 @@
+legend{
+	color:red;
+	font-size: 30px;
+	font-family:黑体 ;
+	font-weight: bold;
+}
+fieldset{
+	width: 600px;
+	height: 180px;
+}
+#shang{
+	border: 1px solid gainsboro;
+	width: 550px;
+	height: 41px;
+	margin-top: 20px;
+}
+#div1{
+	width: 23px;
+	height: 23px;
+	background-color: red;
+	margin-top: 8px;
+	margin-left: 8px;
+	float: left;
+	position:relative;
+}
+
+#div2{
+	width: 23px;
+	height: 23px;
+	background-color: goldenrod;
+	margin-top: 8px;
+	margin-left: 8px;
+	float: left;
+	position:relative;
+}
+#div3{
+	width: 23px;
+	height: 23px;
+	background-color: greenyellow;
+	margin-top: 8px;
+	margin-left: 8px;
+	position:relative;
+	
+	float: left;
+}
+#div4{
+	width: 23px;
+	height: 23px;
+	background-color: cornflowerblue;
+	margin-top: 8px;
+	margin-left: 8px;
+	float: left;
+	position:relative;
+	
+}
+#div5{
+	width: 23px;
+	height: 23px;
+	background-color: gray;
+	margin-top: 8px;
+	margin-left: 8px;
+	position:relative;
+	
+	float: left;
+}
+#div6{
+	width: 23px;
+	height: 23px;
+	background-color: palevioletred;
+	margin-top: 8px;
+	margin-left: 8px;
+	position:relative;
+	
+	float: left;
+}
+#xia{
+	/*border: 1px solid gainsboro;*/
+	width: 540px;
+	height: 58px;
+	margin-top: 10px;
+	margin-left: 5px;
+	padding-left: 5px;
+	position:relative;
+}
+

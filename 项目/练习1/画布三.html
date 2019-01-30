@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0 auto;
+			}
+			#canvas{
+				border: 5px solid red;
+				background-color: white;
+				float: left;
+			}
+			#canvas1{
+				border: 5px solid red;
+				background-color: gray;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="500" height="500"> </canvas>
+		<canvas id="canvas1" width="300" height="500"> </canvas>
+
+		<script>
+			var canvas=document.getElementById("canvas");
+			var canvas1=document.getElementById("canvas1");
+			var c=canvas.getContext("2d");
+			c.translate(110,110)
+			var g=c.createLinearGradient(100,100,200,200); 
+			g.addColorStop(0,"red");
+			g.addColorStop(0.3,"white");
+			g.addColorStop(0.6,"yellow");
+			g.addColorStop(0.8,"green");
+			g.addColorStop(1,"pink");
+			g.fillStyle=g;
+			g.fill();
+			g.stroke();
+		    var image=new Image();
+		    image.src='images/snowflake.png';
+		    images.onload=function(){
+		    var img=context.createPattern(image,'rep')
+		    c.fillStyle=img;
+		    c.strokeStyle="greenyellow";
+		    	
+		    	
+		    }
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

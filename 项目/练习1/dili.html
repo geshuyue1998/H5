@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			
+		</title>
+		<style>
+			p{
+				column-span：all; 
+			}
+			.div1{
+				-webkit-column-gap:10px; 
+				column-width:100px;
+				-webkit-column-count:3; 
+				column-rule-color:#0000FF ;
+				background-color: #ffff00; 
+				color: #000000; 
+				width: 300px; 
+				transition:  background-color 1s linear, color 1s linear, width 1s linear;
+
+				
+			}
+			.div1:hover{
+				/*background-color: #00ffff;
+				width: 200px;
+				transition-property: background-color,width;
+				transition-duration: 5s;
+				transition-delay: 2s;*/
+				/*background-color: red; 
+				color: #ffffff; 
+				width: 400px; */
+				animation-name: mycolor; 
+				animation-duration: 5s; 
+				animation-timing-function: linear; 
+			}
+			@keyframes mycolor{
+				0%{
+					background-color: red;
+				}
+				25%{
+					background-color:yello;
+				}
+				50%{
+					background-color: blue;
+				}
+				75%{
+					background-color: purple;
+				}
+				100%{
+					background-color: black;
+				}
+			
+			
+			
+			
+			
+			}
+			/*div1:hover{ 
+				animation-name: mycolor; 
+				animation-duration: 5s; 
+				animation-timing-function: linear; 
+				}*/
+
+		</style>
+	</head>
+	<body>
+		<p>并根据一个词法状态机生成一个Token流</p>
+		<div class="div1">
+			<p>并根据一个词法状态机生成一个Token流</p>
+			回归一下之前提到的概念，编译器的工作流程，首先将文件按照流的方式依次读入内存，并根据一个词法状态机生成一个Token流，那么Token接下来该怎么被处理呢？
+我们可以参考一下语言的规律。
+我们的文件读入流是为了读入字符，字符呢其实就是一个语言的词素，举个例子好像我们构造一个英文单词所用到的可接收的英文字母。
+那么Token 是由多个词素构成的单词，那么有了单词我们下面考虑的就应该是如何组成句子了。
+类比英文的语法，我们知道一个句子，无非几种结构，什么主谓宾，主系表。。。当然不是讨论英语怎么学，但是编译原理内，我们会发现一个很好玩的事，分析语法首先要找到开始Token也就是开始符号，即开始构建一个合法句子的几号。
+那么对比英文里面的几种结构，句子的开端其实就是主语啦，那么我们从一个token流读的时候构建句子的时候当然也要按照一个开始符号集合来构建句子，构建好了一个句子，那么这样的话 构建文章也是不用费劲的呀。
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.div1{
+				width: 40px;
+				height: 30px;
+				border: 1px solid red;
+				position: relative;
+				left: 0;
+				top:0;				
+			}
+			.div1:hover{
+				animation-name: mycolor; 
+				animation-duration: 5s; 
+				animation-timing-function: linear; 
+				animation: mymove 2s 0.5s;
+			}
+				
+			@keyframes mycolor{
+				0%{
+					background-color: red;
+					
+				}
+				25%{
+					background-color:yello;
+					
+				}
+				50%{
+					background-color: blue;
+					
+				}
+				75%{
+					background-color: purple;
+						
+				}
+				100%{
+					background-color: black;
+						
+				}
+			}
+			@keyframes mymove{
+				0%{
+					
+					left: 0;
+					top:0;
+				}
+				25%{
+					
+					left: 0;
+					top:300px;
+				}
+				50%{
+				
+					left: 300px;
+					top:300px;
+				}
+				75%{
+					
+					left:300px;
+					top:300px;
+				}
+				100%{
+					
+					left:300px;
+					top:300px;
+				}
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="div1">
+			
+		</div>
+	</body>
+</html>

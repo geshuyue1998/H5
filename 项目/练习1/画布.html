@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0 auto;
+			}
+			#canvas{
+				border: 5px solid red;
+				background-color: white;
+				float: left;
+			}
+			#canvas1{
+				border: 5px solid red;
+				background-color: gray;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="300" height="500"> </canvas>
+		<canvas id="canvas1" width="300" height="500"> </canvas>
+
+		<script>
+			var canvas=document.getElementById("canvas");
+			var canvas1=document.getElementById("canvas1");
+			var context=canvas.getContext("2d");
+			var context1=canvas1.getContext("2d");
+
+//			context.moveTo(100,100);
+//			context. lineTo(200,200);
+//			context. lineTo(100,200);
+//			context. lineTo(100,100); 
+//			context.lineWidth=5;
+//			context.strokeStyle="green"
+//			context.fillStyle="red";
+//			context.fill();
+//			context. stroke() ;
+//			context.beginPath();
+//			context.moveTo(120,100);
+//			context. lineTo(220,200);
+//			context. lineTo(220,100);
+//			context. lineTo(120,100); 
+//			
+//			context.lineWidth=5;
+//			context.strokeStyle="aquamarine"
+//			context.fillStyle="#DB7093";
+//			context.fill();
+//			context. stroke() ;
+//			context.moveTo(100,100);
+//			context.lineTo(130,150);
+//			context.lineTo(180,150);
+//			context.lineTo(30,250);
+//			context.lineTo(30,250);
+//			context.lineTo(230,250);
+//			context.lineWidth=5;
+//			context.strokeStyle="green"
+//			context.fillStyle="red";
+//			context.fill();
+//			context. stroke() ;
+//圆和弧
+//			context.beginPath();
+//			context.arc(300,300,200,0,1*Math.PI,true);
+//			context.lineWidth=5;
+//			context.strokeStyle="green"
+//			context.fillStyle="red";
+//			context.fill();
+//			context.closePath();
+//			context. stroke() ;
+//			for(i=0;i<10;i++){
+//				context.beginPath();
+//				context.arc(50+100*i,60,40,0,2*Math.PI*(i+1)/10,false);
+//				context.closePath();
+//				context. stroke() ;
+//			}
+
+			for(i=0;i<8;i++){
+				context.strokeStyle="green";
+				context.beginPath();
+				context.arc(0,500,10+i*20,0,0.5*Math.PI,true);
+				//context.closePath();
+				context. stroke() ;
+			}
+			
+			//太极
+//				context.strokeStyle="green";
+//				context.fillStyle="white";
+//				context.beginPath();
+//				context.arc(200,200,100,0.5*Math.PI,1.5*Math.PI,true);
+//				context.fill();
+//				//context.closePath();
+//				context. stroke() ;
+//				
+//				context.strokeStyle="green";
+//				context.fillStyle="black";
+//				context.beginPath();
+//				context.arc(200,200,100,0.5*Math.PI,1.5*Math.PI,false);
+//				context.fill();
+//				//context.closePath();
+//				context. stroke() ;
+//				
+//				context.strokeStyle="white";
+//				context.fillStyle="white";
+//				context.beginPath();
+//				context.arc(200,150,50,0.5*Math.PI,1.5*Math.PI,false);
+//				context.fill();
+//				//context.closePath();
+//				context. stroke() ;
+//				
+//				context.strokeStyle="black";
+//				context.fillStyle="black";
+//				context.beginPath();
+//				context.arc(200,250,50,0.5*Math.PI,1.5*Math.PI,true);
+//				context.fill();
+//				//context.closePath();
+//				context. stroke() ;
+//				
+//				context.strokeStyle="black";
+//				context.fillStyle="white";
+//				context.beginPath();
+//				context.arc(200,250,6,0,2*Math.PI,true);
+//				context.fill();
+//				//context.closePath();
+//				context. stroke() ;
+//				context.strokeStyle="black";
+//				context.fillStyle="black";
+//				context.beginPath();
+//				context.arc(200,150,6,0,2*Math.PI,true);
+//				context.fill();
+//				//context.closePath();
+//				context. stroke() ;
+				
+				
+				
+				//太极
+				context1.strokeStyle="green";
+				context1.fillStyle="white";
+				context1.beginPath();
+				context1.arc(200,200,100,0.5*Math.PI,1.5*Math.PI,true);
+				context1.fill();
+				//context.closePath();
+				context1. stroke() ;
+				
+				context1.strokeStyle="green";
+				context1.fillStyle="black";
+				context1.beginPath();
+				context1.arc(200,200,100,0.5*Math.PI,1.5*Math.PI,false);
+				context1.fill();
+				//context.closePath();
+				context1. stroke() ;
+				
+				context1.strokeStyle="white";
+				context1.fillStyle="white";
+				context1.beginPath();
+				context1.arc(200,150,50,0.5*Math.PI,1.5*Math.PI,false);
+				context1.fill();
+				//context.closePath();
+				context1. stroke() ;
+				
+				context1.strokeStyle="black";
+				context1.fillStyle="black";
+				context1.beginPath();
+				context1.arc(200,250,50,0.5*Math.PI,1.5*Math.PI,true);
+				context1.fill();
+				//context.closePath();
+				context1. stroke() ;
+				
+				context1.strokeStyle="black";
+				context1.fillStyle="white";
+				context1.beginPath();
+				context1.arc(200,250,6,0,2*Math.PI,true);
+				context1.fill();
+				//context.closePath();
+				context1. stroke() ;
+				context1.strokeStyle="black";
+				context1.fillStyle="black";
+				context1.beginPath();
+				context1.arc(200,150,6,0,2*Math.PI,true);
+				context1.fill();
+				//context.closePath();
+				context1. stroke() ;
+				
+				
+				context.fillRect(20, 20, 100, 100) 
+				//strokeRect(x，y，width，height); 绘制不填色的矩形（空心） 
+				context.clearRect(20，20，50，50);
+
+		</script>
+	</body>
+</html>
