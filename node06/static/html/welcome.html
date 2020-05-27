@@ -1,0 +1,101 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+<title>我的桌面</title>
+</head>
+<body>
+<div class="page-container">
+	<p class="f-20 text-success" style="font-size: 24px;">欢迎来到美时后台 <span class="f-14" style="font-size: 18px; margin-left: 20px;">v1.1</span></p>
+</div>	
+<div id="count">
+  <p>截止目前用户已注册<span id="usercount"></span>人</p>
+  <p>截止目前美食分享共<span id="foodcount"></span>条</p>
+</div>
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script> 
+<style type="text/css">
+body::after{
+	background-image: url(../image/logo.png);
+	background-repeat:no-repeat;
+	background-position:center ;
+	content: "";
+	opacity: 0.4;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;   /* 一定要设置position:absolute,这样才能设置z-index，让背景处于内容的下一层 */
+}
+body{ 
+	display: block;
+  	position: relative;
+}
+  #count{
+    margin-top:20px ;
+    margin-left: 40px;
+    font-size: 20px;
+  }
+  #usercount{
+    font-size: 28px;
+    margin: 15px;
+    color: crimson;
+  }
+  #foodcount{
+    font-size: 28px;
+    margin: 15px;
+    color: crimson;
+  }
+</style>
+<script>
+function getusercount(){
+	//请求页面数据
+	$.post('http://127.0.0.1:3000/user/count',{},(data)=>{
+		console.log(data);
+		if(data.err==0){
+			renderuserCount(data)
+		}else{
+			alert('请刷新页面')
+		}
+	})
+}
+function getfoodcount(){
+	//请求页面数据
+	$.post('http://127.0.0.1:3000/food/count',{},(data)=>{
+		console.log(data);
+		if(data.err==0){
+			renderfoodCount(data)
+		}else{
+			alert('请刷新页面')
+		}
+	})
+}
+function renderuserCount(data){
+		//根据参数渲染表格
+      let tmpstr = `
+      <span id="usercount">${data.count}</span>`
+		
+	$('#usercount').html(tmpstr)
+}
+function renderfoodCount(data){
+		//根据参数渲染表格
+      let tmpstr = `
+      <span id="foodcount">${data.count}</span>`
+		
+	$('#foodcount').html(tmpstr)
+}
+getusercount()
+getfoodcount()
+</script>
+</body>
+</html>

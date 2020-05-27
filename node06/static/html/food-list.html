@@ -1,0 +1,341 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5shiv.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<![endif]-->
+<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+<style>
+	body::after{
+	
+	background-image: url(../image/logo.png);
+	background-repeat:no-repeat;
+	background-position:center ;
+	content: "";
+	opacity: 0.4;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;   /* 一定要设置position:absolute,这样才能设置z-index，让背景处于内容的下一层 */
+}
+body{ 
+	display: block;
+  	position: relative;
+}
+.page{
+margin-top: 11px;
+text-align: right;
+}
+
+.first, .prev, .next, .final{
+	font-size: 10px;
+	color: slategrey;
+	border:1px solid rgb(170, 170, 170);
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+#gopage{
+	border:1px solid rgb(170, 170, 170); 
+	height: 16px;
+	width: 50px;
+	 border-radius: 2px;
+	 font-size: 10px;
+}
+ .go{
+	 font-size: 11px;
+	 color: slategrey;
+	height: 17px;
+	width: 24px;
+	border-radius: 2px;
+	cursor: pointer;
+	border:1px solid rgb(170, 170, 170);
+}
+
+	.sea{
+		border-radius: 2px;
+		position:relative;
+        left:220px;
+		bottom: 34px;
+	}
+	#search{
+		border-radius: 2px;
+		width: 120px;
+		height: 23px;
+		border:1px solid #000; 
+	}
+	.but{
+		border-radius: 2px;
+		width: 55px;
+		height: 28px;
+		color: ghostwhite; 
+		background-color: green; 
+		font-size: 14px; 
+		border:0px;
+	}
+	
+	.mt-20{
+	
+		margin-top:-15px ;
+		
+	}
+</style>
+<title>美食列表</title>
+</head>
+<body>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 美食管理 <span class="c-gray en">&gt;</span> 美食列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<div class="page-container">
+	
+	<div class="cl pd-5 bg-1 bk-gray mt-20"> 
+		<span class="l">
+				
+				<!-- //当选中热菜的时候，下面数据变成类别为热菜的美食，所以分类查询就是在点击切换的时候。发起请求.核心事件为onchange ,对onchange进行数据请求和刷新的界面-->
+				
+				<a class="btn btn-primary radius" onclick="food_add('添加美食','food-add.html')" href="javascript:;">
+					<i class="Hui-iconfont">&#xe600;</i> 
+					添加美食
+				</a>
+				<!-- 分类查询 -->
+				<select onchange="changeType(this)" style="width: 100px; height: 26px; position:relative; top:2px;">
+					<option value="全部">全部</option>
+					<option value="热菜">热菜</option>
+					<option value="凉菜">凉菜</option>
+					<option value="饮品">饮品</option>
+					<option value="西餐">西餐</option>
+					<option value="主食">主食</option>
+				</select>
+			</span> <span class="r">共有数据：<span id="foodcount"></span>条</span> </div>
+				<!-- 模糊查询 -->
+				<div class="sea">
+					<input type='text' placeholder="请输入查询内容" id='search'>
+				    <button onclick="search()"  class="but">搜索</button>
+				</div>
+					
+	<div class="mt-20">
+		<table class="table table-border table-bordered table-bg table-hover table-sort">
+			<thead>
+				<tr class="text-c">
+					<th width="40"><input name="" type="checkbox" value=""></th>
+					<th width="50">序号</th>
+					<th width="80">名字</th>
+					<th width="80">作者</th>
+					<th width="60">类别</th>
+					<th width="150">用料</th>
+					<th width="200">流程</th>
+					<th width="150">图片</th>
+					<th width="80">操作</th>
+				</tr>
+			</thead>
+				<tbody id='tbody' >
+					
+			    </tbody>
+			
+			
+		</table>
+		<div class="page">
+			<span onclick="jump('first')" class="first" >首页</span>
+			<span onclick="jump('prev')"  class="prev" >prev</span>
+			<span >
+				<input type="text" placeholder="请输入页码" id='gopage' >
+				<button onclick="jump('go')" class="go" >跳转</button>
+			</span>
+			<span onclick="jump('next')" class="next" >next</span>
+			<span onclick="jump('final')" class="final" >尾页</span>
+		</div>
+	</div>
+</div>
+
+<!--_footer 作为公共模版分离出去-->
+<script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script> 
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script> 
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script> 
+<script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript">
+
+
+let allpage=0//总页数
+let nowpage=1//当前页
+//渲染数据
+function getfoodList(pageSize,page){
+	//请求页面数据
+	$.post('http://127.0.0.1:3000/food/getInfoByPage',{pageSize:pageSize,page:page},(data)=>{
+		console.log(data);
+		if(data.err==0){
+			allpage=data.info.allpage//服务器端请求赋给变量注意数据结构不要错
+			renderList(data.info.list)//注意数据结构不要错
+		}else{
+			alert('请刷新页面')
+		}
+	})
+}
+function renderList(data){
+		//根据参数渲染表格
+		if(!data.length){
+			$('#tbody').html('<h5>暂无数据</h5>')
+			return false
+		}
+		let str=''
+		for (let index = 0; index < data.length; index++) {
+			let tmpstr = `
+				<tr class="text-c">
+					<td><input name="" type="checkbox" value=""></td>
+					<td>${index+1}</td>
+					<td>${data[index].foodtitle}</td>
+					<td>${data[index].authorname}</td>
+					<td>${data[index].foodclassify}</td>
+					<td class="text-l">${data[index].foodmaterial}</td>
+					<td>${data[index].foodway}</td>
+					<td class="text-c"><img width='100' src='${data[index].foodimg}'></td>
+					<td class="td-manage">
+						<a style="text-decoration:none" class="ml-5" onClick="food_edit('美食修改','food-edit.html','${data[index]._id}')" href="javascript:;" title="编辑">
+							<i class="Hui-iconfont">&#xe6df;</i>
+						</a> 
+						<a style="text-decoration:none" class="ml-5" onClick="food_del(this,'${data[index].foodid}')" href="javascript:;" title="删除">
+							<i class="Hui-iconfont">&#xe6e2;</i>
+						</a>
+					</td>
+				</tr>
+			`
+			str+=tmpstr
+		}
+	$('#tbody').html(str)
+}
+function getfoodcount(){
+	//请求页面数据
+	$.post('http://127.0.0.1:3000/food/count',{},(data)=>{
+		console.log(data);
+		if(data.err==0){
+			renderfoodCount(data)
+		}else{
+			alert('请刷新页面')
+		}
+	})
+}
+function renderfoodCount(data){
+		//根据参数渲染表格
+      let tmpstr = `
+      <span id="foodcount">${data.count}</span>`
+		
+	$('#foodcount').html(tmpstr)
+}
+getfoodcount()
+getfoodList(3,1)
+//分页跳转
+function jump(type){
+	switch(type){
+		case 'first':
+			nowpage=1
+			break;
+		case 'final':
+			nowpage=allpage
+			break;
+		case 'next':
+			if(nowpage!==allpage){
+				nowpage++
+			}else{
+				alert('已是最后一页')
+			}break;
+		case 'prev':
+			if(nowpage==1){alert('这是第一页')}
+			else{
+				nowpage--
+			}
+			break;
+		case 'go':
+			if($('#gopage').val()<allpage+1)
+			{nowpage=$('#gopage').val()}
+			else{
+				alert('超出最大页面数')
+			}
+			break;
+		default:
+				break;
+	
+	}
+	getfoodList(3,nowpage)
+}
+
+//分类查询
+function changeType(obj){
+	console.log(obj.value)//获取类别的value值
+	$.post('http://127.0.0.1:3000/food/getInfoByType',{foodclassify:obj.value},(data)=>{
+		console.log(data);
+		if(data.err==0){
+			renderList(data.list)//渲染数据
+		}
+	})
+	
+}
+//模糊查询
+function search(){
+	//获取用户输入内容
+	let str=$('#search').val()
+	$.post('http://127.0.0.1:3000/food/getInfoByKw',{kw:str},(data)=>{
+		if(data.err==0){
+			renderList(data.list)
+		}else{
+			alert('关键字输入错误，请重新输入')
+			
+		}
+	})
+}
+/*               -------------------------------------*/
+/*美食-添加*/
+function food_add(title,url){
+	//框架内置方法，实现页面跳转
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
+}
+
+
+/*修改美食-编辑*/
+function food_edit(title,url,_id){
+	//保存数据
+	window.localStorage.setItem('food_id',_id)
+	//将id存储到food_id字段
+	var index = layer.open({
+		type: 2,
+		title: title,
+		content: url
+	});
+	layer.full(index);
+}
+
+/*图片-删除*/
+function food_del(obj,id){
+	layer.confirm('确认要删除吗？',function(index){
+		$.post('http://localhost:3000/food/del',{foodid:id},(data)=>{
+			if(data.err==0){
+				layer.msg('已删除!',{icon:1,time:1000});
+				getfoodcount()
+				getfoodList(3,1)//调用这个方法，重新刷新界面
+			}else{
+				layer.msg('删除失败!',{icon:1,time:1000});
+			}
+		})	
+	});
+}
+</script>
+</body>
+</html>
